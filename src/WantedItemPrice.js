@@ -1,0 +1,19 @@
+import React, { useState, useEffect } from "react";
+
+function WantedItemPrice(props) {
+  const [fairPrice, setFairPrice] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
+  useEffect(() => {
+    fetch(`http://localhost:7891/api/v1/price/${props.wantid}`)
+      .then((res) => res.json())
+      .then((result) => {
+        setFairPrice(result["Very Good (VG)"]["value"]);
+        setIsLoaded(true);
+      });
+  }, []);
+  console.log(fairPrice);
+  if (isLoaded === false) return <h3>loading</h3>;
+
+  return <p>Fair Price: {fairPrice}</p>;
+}
+export default WantedItemPrice;
