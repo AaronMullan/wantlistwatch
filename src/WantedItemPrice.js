@@ -7,11 +7,11 @@ function WantedItemPrice(props) {
     fetch(`http://localhost:7891/api/v1/price/${props.wantid}`)
       .then((res) => res.json())
       .then((result) => {
-        setFairPrice(result["Very Good (VG)"]["value"]);
+        setFairPrice(result["Very Good (VG)"]["value"].toFixed(2));
         setIsLoaded(true);
       });
   }, []);
-  console.log(fairPrice);
+  // console.log(fairPrice);
   if (isLoaded === false) return <h3>loading</h3>;
 
   return <p>Fair Price: {fairPrice}</p>;

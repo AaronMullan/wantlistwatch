@@ -9,14 +9,14 @@ function WantedItems(props) {
     fetch(`https://api.discogs.com/users/${props.username}/wants`)
       .then((res) => res.json())
       .then((result) => {
+        setWantlist(result);
         setIsLoaded(true);
       });
-  }, []); //eslint-disable-line
+  }, [props.username]);
 
   if (isLoaded === false) return <h3>loading</h3>;
 
-  const wantedArray = Array.from(wantlist);
-  const wantedItems = wantedArray.map((item) => (
+  const wantedItems = wantlist.wants.map((item) => (
     <li>
       <p>
         {item.basic_information.artists[0].name} :{item.basic_information.title}
