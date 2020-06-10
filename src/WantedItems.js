@@ -18,9 +18,9 @@ function WantedItems(props) {
 
   const wantedItems = wantlist.wants.map((item) => (
     <li>
-      <p>
+      <h2>
         {item.basic_information.artists[0].name} :{item.basic_information.title}
-      </p>
+      </h2>
       <WantedItemPrice wantid={item.basic_information.id} />
     </li>
   ));
