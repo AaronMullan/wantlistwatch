@@ -3,12 +3,17 @@ import React, { useState, useEffect } from "react";
 function WantedItemPrice(props) {
   const [fairPrice, setFairPrice] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   useEffect(() => {
-    fetch(`http://localhost:7891/api/v1/price/${props.wantid}`)
+    fetch(`http://localhost:3002/api/v1/price/${props.wantid}`)
       .then((res) => res.json())
       .then((result) => {
-        setFairPrice(result["Very Good (VG)"]["value"].toFixed(2));
+        if(result["Very Good (VG)"]) {
+        setFairPrice(result["Very Good (VG)"]["value"].toFixed(2))
+        }
+        else {
+        setFairPrice('unknown')
+        }
         setIsLoaded(true);
       });
   }, []);

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WantedItemPrice from "./WantedItemPrice.js";
+import WantedItemSales from "./WantedItemSales.js";
 
 function WantedItems(props) {
   const [wantlist, setWantlist] = useState();
@@ -22,6 +23,7 @@ function WantedItems(props) {
         {item.basic_information.artists[0].name} :{item.basic_information.title}
       </h2>
       <WantedItemPrice wantid={item.basic_information.id} />
+      <WantedItemSales wantid={item.basic_information.id} />
     </li>
   ));
 
