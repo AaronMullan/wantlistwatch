@@ -1,24 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import WantedItems from "./WantedItems.js";
+import "./App.css";
 
 function App() {
+  const [username, setUsername] = useState("aaroncmullan");
+  const [displayName, setDisplayName] = useState();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setUsername(displayName);
+    console.log(username);
+    console.log(displayName);
+  };
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Wantlist Watcher</h1>
+        <h5>
+          Enter {" "}
+          <a
+            href="https://www.discogs.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+             Discogs.com 
+          </a> {" "}
+          User Name to see Deals on Wantlist Items
+        </h5>
+        <form onSubmit={handleSubmit}>
+          <label>
+            username
+            <input
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </header>
+      <div>
+        <WantedItems username={username} />
+      </div>
     </div>
   );
 }
