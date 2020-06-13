@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import WantedItems from "./WantedItems.js";
 import "./App.css";
 
@@ -23,7 +23,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-             Discogs.com 
+            Discogs.com
           </a> {" "}
           User Name to see Deals on Wantlist Items
         </h5>

@@ -11,6 +11,42 @@ const sampleSuggestedPrices = { //eslint-disable-line
 
 const sampleWantsArray = [4282482, 1292887]; //eslint-disable-line
 
+export const sampleRates = {
+  "CAD": 1.357661005,
+  "HKD": 7.7500884643,
+  "ISK": 134.5541401274,
+  "PHP": 50.2149681529,
+  "DKK": 6.59509908,
+  "HUF": 306.0863411182,
+  "CZK": 23.6181882519,
+  "GBP": 0.7931086341,
+  "RON": 4.2766277424,
+  "SEK": 9.2978591649,
+  "IDR": 14205.8032554848,
+  "INR": 75.8912774239,
+  "BRL": 5.0767869781,
+  "RUB": 69.6799363057,
+  "HRK": 6.6932059448,
+  "JPY": 107.2717622081,
+  "THB": 30.9501061571,
+  "CHF": 0.9463021939,
+  "EUR": 0.8846426044,
+  "MYR": 4.2675159236,
+  "BGN": 1.7301840057,
+  "TRY": 6.8315640481,
+  "CNY": 7.0762561925,
+  "NOK": 9.5961606511,
+  "NZD": 1.5528131635,
+  "ZAR": 17.055378627,
+  "USD": 1.0,
+  "MXN": 22.5097310686,
+  "SGD": 1.3904812456,
+  "AUD": 1.4549716914,
+  "ILS": 3.4668259023,
+  "KRW": 1203.5120311394,
+  "PLN": 3.9352441614
+}
+
 const sampleWantsObject = { //eslint-disable-line
   'wants': [
     {
@@ -168,7 +204,7 @@ const sampleScrape = { //eslint-disable-line
   'thumbnail':'https://img.discogs.com/kmwujHzuyUhKgMFowrB6lQ_EHkY=/fit-in/300x 300/filters:strip_icc():format(jpeg):mode_rgb():quality(40)/discogs-images/R-4282482-1375913082-1796.jpeg.jpg'
 };
 
-const sampleGetSaleItems = // 20200612150600
+export const sampleGetSaleItems = // 20200612150600
 // http://localhost:3002/api/v1/sales/11160522
 
 {
@@ -184,7 +220,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Very Good (VG)",
       "seller": "Psychedelic-Eye",
       "ships_from": "Italy",
-      "price": "€160.00"
+      "price": "$160.00"
     },
     {
       "title": "13th Floor Elevators - Easter Everywhere (LP, Album, \"Po)",
@@ -192,7 +228,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Very Good (VG)",
       "seller": "billyfrancis",
       "ships_from": "United States",
-      "price": "$250.00"
+      "price": "£250.00"
     },
     {
       "title": "13th Floor Elevators - Easter Everywhere (LP, Album, \"Po)",
@@ -200,7 +236,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Good Plus (G+)",
       "seller": "cultureyard_records",
       "ships_from": "United States",
-      "price": "$295.00"
+      "price": "€295.00"
     },
     {
       "title": "13th Floor Elevators - Easter Everywhere (LP, Album, \"Po)",
@@ -208,7 +244,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Good Plus (G+)",
       "seller": "cultureyard_records",
       "ships_from": "United States",
-      "price": "$295.00"
+      "price": "CA$295.00"
     },
     {
       "title": "13th Floor Elevators - Easter Everywhere (LP, Album, \"Po)",
@@ -216,7 +252,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Very Good Plus (VG+)",
       "seller": "PlutoniumCake",
       "ships_from": "Italy",
-      "price": "€350.00"
+      "price": "A$350.00"
     },
     {
       "title": "13th Floor Elevators - Easter Everywhere (LP, Album, \"Po)",
@@ -224,7 +260,7 @@ const sampleGetSaleItems = // 20200612150600
       "condition_media": "Very Good Plus (VG+)",
       "seller": "dacapoforeverchanges",
       "ships_from": "Italy",
-      "price": "€675.00"
+      "price": "¥675.00"
     }
   ],
   "id": "11160522",
