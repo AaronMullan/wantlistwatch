@@ -3,35 +3,63 @@ import { getExchangeRates, currencyConverter } from './currencyConverter.js'
 import { sampleRates } from './sampledata.js'
 
 function WantedItemSales(props) {
-  const [saleitems, setsaleitems] = useState('none');
+  const [lowestprice, setlowestprice] = useState('$100');
   const [isLoaded, setIsLoaded] = useState(false);
   const [exchangeRate, setExchangeRate] = useState({});
   const [convertedPrice, setConvertedPrice] = useState();
+  const [veryGoodPrice, setveryGoodPrice] = useState();
+  const [percentage, setPercentage] = useState()
+  
+
+  useEffect(() => {
+    fetch(`http://localhost:3002/api/v1/sales/${props.wantid}`)
+      .then((res) => res.json())
+      .then((result) => result.listing[0] ?
+        result.listing[0].price : 'none')
+      .then((data) => setlowestprice(data))
+
+      .then(() => setIsLoaded(true))
+      .catch(error => console.error(error));
+  }, []);
 
   useEffect(() => {
     let newprice;
     getExchangeRates()
-      .then(res => setExchangeRate(res.rates))
-    fetch(`http://localhost:3002/api/v1/sales/${props.wantid}`)
+      .then(res => setExchangeRate(sampleRates))
+      .then(() => newprice = currencyConverter(lowestprice, exchangeRate).toFixed(2))
+      .then(() => setConvertedPrice(newprice))
+  })
+
+  useEffect(() => {
+    fetch(`http://localhost:3002/api/v1/price/${props.wantid}`)
       .then((res) => res.json())
       .then((result) => {
-        if (result.listing[0]) {
-          setsaleitems(result.listing[0].price)
+        if (result["Very Good (VG)"]) {
+          setveryGoodPrice(result["Very Good (VG)"]["value"].toFixed(2))
         }
         else {
-          setsaleitems('none')
+          setveryGoodPrice('unknown')
         }
-      }
-      .then(() => newprice = currencyConverter('€340.0 0', sampleRates)
-      .then(()=> setConvertedPrice(newprice))
+      })
+    },[])
+  useEffect(()=>{
+    let percentage;
+    if(convertedPrice && veryGoodPrice) percentage = (convertedPrice/veryGoodPrice  * 100).toFixed(2)
+    setPercentage(percentage)
+  }
+  )
+  
 
-      setIsLoaded(true)
-      )
-  }, []);
+    if(isLoaded === false) return <h3>loading</h3>;
 
-  if (isLoaded === false) return <h3>loading</h3>;
+    return (
+      <>
+        <p>Suggested Price (VG Condition): {veryGoodPrice}</p>
+        <p>Cheapest Now: {lowestprice} $USD {convertedPrice}</p>
+        <p>Percentage Difference = {percentage}%</p>
+      </>
+    );
+  }
 
-  return <p>Cheapest Now: {convertedPrice}</p>;
-}
 
-export default WantedItemSales;
+    export default WantedItemSales;

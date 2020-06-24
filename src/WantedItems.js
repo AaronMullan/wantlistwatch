@@ -22,7 +22,7 @@ function WantedItems(props) {
       <h2>
         {item.basic_information.artists[0].name} :{item.basic_information.title}
       </h2>
-      <WantedItemPrice wantid={item.basic_information.id} />
+      {/* <WantedItemPrice wantid={item.basic_information.id} /> */}
       <WantedItemSales wantid={item.basic_information.id} />
     </li>
   ));
