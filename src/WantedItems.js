@@ -18,12 +18,10 @@ function WantedItems(props) {
   if (isLoaded === false) return <h3>loading</h3>;
 
   const wantedItems = wantlist.wants.map((item) => (
+ 
     <li>
-      <h2>
-        {item.basic_information.artists[0].name} :{item.basic_information.title}
-      </h2>
-      {/* <WantedItemPrice wantid={item.basic_information.id} /> */}
-      <WantedItemSales wantid={item.basic_information.id} />
+     
+      <WantedItemSales wantid={item.basic_information.id} artist={item.basic_information.artists[0].name} title={item.basic_information.title}/>
     </li>
   ));
 

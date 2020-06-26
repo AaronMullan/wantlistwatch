@@ -54,6 +54,8 @@ function WantedItemSales(props) {
 
     return (
       <>
+        <p>Artist: {props.artist}</p>
+        <p>Title: {props.title}</p>
         <p>Suggested Price (VG Condition): {veryGoodPrice}</p>
         <p>Cheapest Now: {lowestprice} $USD {convertedPrice}</p>
         <p>Percentage Difference = {percentage}%</p>
