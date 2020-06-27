@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WantedItems from "./WantedItems.js";
+import Sandbox from "./Sandbox.js";
 import "./App.css";
 
 function App() {
@@ -40,7 +41,8 @@ function App() {
         </form>
       </header>
       <div>
-        <WantedItems username={username} />
+        {/* <WantedItems username={username} /> */}
+        <Sandbox username={username} />
       </div>
     </div>
   );

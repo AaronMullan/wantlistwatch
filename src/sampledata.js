@@ -47,7 +47,7 @@ export const sampleRates = {
   "PLN": 3.9352441614
 }
 
-const sampleWantsObject = { //eslint-disable-line
+export const sampleWantsObject = { //eslint-disable-line
   'wants': [
     {
       'rating': 0,
