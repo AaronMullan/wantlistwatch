@@ -41,8 +41,7 @@ function App() {
         </form>
       </header>
       <div>
-        {/* <WantedItems username={username} /> */}
-        <Sandbox username={username} />
+        <WantedItems username={username} />
       </div>
     </div>
   );
