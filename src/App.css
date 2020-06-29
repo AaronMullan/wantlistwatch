@@ -1,22 +1,42 @@
 .App {
   text-align: center;
-  background-color: #073642;
-  color: #fdf6e3;
   min-height: 100vh;
 }
 .App-header {
+  background-color: black;
+  color: #f2f2f2;
   padding-top: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  width: 100vw;
+}
+.Subheader {
+  background-color: #333333;
+  width: 90vw
+
+}
+h1 {
+  color:#4DD2FF;
+ 
+}
+label{
+  font-size: .8em;
+  padding-right: .5em;
+}
+a {
+  color: black;
+}
+.Subheader a {
+  color: white;
+}
+a:hover{
+  text-decoration: underline;
+  text-decoration-color:#4DD2FF;
 }
 
-a {
-  color: #2aa198;
-  text-decoration: none;
-}
 ul {
   list-style: none;
   padding: 0;

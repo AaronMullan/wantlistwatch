@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import WantedItems from "./WantedItems.js";
-import Sandbox from "./Sandbox.js";
 import "./App.css";
 
 function App() {
@@ -17,7 +16,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Wantlist Watcher</h1>
-        <h5>
+        <div>
+        <h5 className="Subheader">
           Enter {" "}
           <a
             href="https://www.discogs.com"
@@ -26,17 +26,16 @@ function App() {
           >
             Discogs.com
           </a> {" "}
-          User Name to see Deals on Wantlist Items
+          User Name to See Deals on Wantlist Items
         </h5>
+        </div>
         <form onSubmit={handleSubmit}>
-          <label>
-            username
+          <label>username:</label>
             <input
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
             />
-          </label>
           <input type="submit" value="Submit" />
         </form>
       </header>

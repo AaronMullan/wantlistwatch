@@ -50,102 +50,66 @@ export const sampleRates = {
 export const sampleWantsObject = { //eslint-disable-line
   'wants': [
     {
-      'rating': 0,
-      'resource_url': 'https://api.discogs.com/users/aaroncmullan/wants/4282482',
-      'basic_information': {
-        'labels': [
+      "id": 2366432,
+      "resource_url": "https://api.discogs.com/users/aaroncmullan/wants/2366432",
+      "rating": 0,
+      "date_added": "2020-02-24T08:17:54-08:00",
+      "basic_information": {
+        "id": 2366432,
+        "master_id": 10362,
+        "master_url": "https://api.discogs.com/masters/10362",
+        "resource_url": "https://api.discogs.com/releases/2366432",
+        "title": "The Dark Side Of The Moon",
+        "year": 1974,
+        "formats": [
           {
-            'name': 'Elektra',
-            'entity_type': '1',
-            'catno': 'EKS-74051',
-            'resource_url': 'https://api.discogs.com/labels/651',
-            'id': 651,
-            'entity_type_name': 'Label'
+            "name": "8-Track Cartridge",
+            "qty": "1",
+            "descriptions": [
+              "Album",
+              "Quadraphonic"
+            ]
           }
         ],
-        'year': 1969,
-        'master_url': 'https://api.discogs.com/masters/38215',
-        'artists': [
+        "labels": [
           {
-            'join': '',
-            'name': 'The Stooges',
-            'anv': '',
-            'tracks': '',
-            'role': '',
-            'resource_url': 'https://api.discogs.com/artists/39770',
-            'id': 39770
+            "name": "Harvest",
+            "catno": "Q8W-11163",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 2564,
+            "resource_url": "https://api.discogs.com/labels/2564"
+          },
+          {
+            "name": "Harvest",
+            "catno": "Q8W 11163",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 2564,
+            "resource_url": "https://api.discogs.com/labels/2564"
           }
         ],
-        'id': 4282482,
-        'thumb': '',
-        'title': 'The Stooges',
-        'formats': [
+        "artists": [
           {
-            'descriptions': [
-              'LP',
-              'Album',
-              'Stereo'
-            ],
-            'text': 'CP - Columbia Pitman Pressing',
-            'name': 'Vinyl',
-            'qty': '1'
+            "name": "Pink Floyd",
+            "anv": "",
+            "join": "",
+            "role": "",
+            "tracks": "",
+            "id": 45467,
+            "resource_url": "https://api.discogs.com/artists/45467"
           }
         ],
-        'cover_image': '',
-        'resource_url': 'https://api.discogs.com/releases/4282482',
-        'master_id': 38215
-      },
-      'id': 4282482,
-      'date_added': '2020-02-19T16:43:51-08:00'
+        "thumb": "",
+        "cover_image": "",
+        "genres": [
+          "Rock"
+        ],
+        "styles": [
+          "Classic Rock"
+        ]
+      }
     },
-    {
-      'rating': 0,
-      'resource_url': 'https://api.discogs.com/users/aaroncmullan/wants/1292887',
-      'basic_information': {
-        'labels': [
-          {
-            'name': 'United Artists Records',
-            'entity_type': '1',
-            'catno': 'UAS 29 414 I',
-            'resource_url': 'https://api.discogs.com/labels/4898',
-            'id': 4898,
-            'entity_type_name': 'Label'
-          }
-        ],
-        'year': 1972,
-        'master_url': 'https://api.discogs.com/masters/11693',
-        'artists': [
-          {
-            'join': '',
-            'name': 'Can',
-            'anv': '',
-            'tracks': '',
-            'role': '',
-            'resource_url': 'https://api.discogs.com/artists/17203',
-            'id': 17203
-          }
-        ],
-        'id': 1292887,
-        'thumb': '',
-        'title': 'Ege Bamyasi',
-        'formats': [
-          {
-            'descriptions': [
-              'LP',
-              'Album',
-              'Stereo'
-            ],
-            'name': 'Vinyl',
-            'qty': '1'
-          }
-        ],
-        'cover_image': '',
-        'resource_url': 'https://api.discogs.com/releases/1292887',
-        'master_id': 11693
-      },
-      'id': 1292887,
-      'date_added': '2020-02-01T05:52:42-08:00'
-    }
   ],
   'pagination': {
     'per_page': 50,
