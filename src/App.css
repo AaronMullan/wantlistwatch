@@ -5,7 +5,7 @@
 .App-header {
   background-color: black;
   color: #f2f2f2;
-  padding-top: 2vh;
+  padding: 2vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,29 +15,37 @@
 }
 .Subheader {
   background-color: #333333;
-  width: 90vw
-
+  width: 85vw;
+  padding: 2vw;
+  height: 3vh;
+  border:1px solid #f2f2f2;
 }
-h1 {
+h1, h3 {
   color:#4DD2FF;
- 
 }
 label{
-  font-size: .8em;
+  font-size: .6em;
   padding-right: .5em;
 }
 a {
-  color: black;
+  color: white;
 }
 .Subheader a {
   color: white;
+
 }
 a:hover{
   text-decoration: underline;
   text-decoration-color:#4DD2FF;
 }
-
 ul {
   list-style: none;
-  padding: 0;
+  padding: 0, 15vw;
+  padding-inline-start: 0px;
+}
+li {
+  margin: 1vw;
+  padding: .5vw;
+  background-color: #333333;
+  color: white;
 }

@@ -3,14 +3,12 @@ import WantedItems from "./WantedItems.js";
 import "./App.css";
 
 function App() {
-  const [username, setUsername] = useState("aaroncmullan");
+  const [username, setUsername] = useState();
   const [displayName, setDisplayName] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setUsername(displayName);
-    console.log(username);
-    console.log(displayName);
   };
   return (
     <div className="App">
@@ -29,18 +27,18 @@ function App() {
           User Name to See Deals on Wantlist Items
         </h5>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form>
           <label>username:</label>
             <input
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
             />
-          <input type="submit" value="Submit" />
+          <button onClick={handleSubmit}>Submit</button>
         </form>
       </header>
       <div>
-        <WantedItems username={username} />
+        {username && <WantedItems username={username} />}
       </div>
     </div>
   );

@@ -1,5 +1,3 @@
-import { sampleRates } from './sampledata.js'
-
 export function getExchangeRates() {
   return fetch('https://api.exchangeratesapi.io/latest?base=USD')
     .then(res => res.json())
@@ -32,5 +30,3 @@ export function currencyConverter(price, rates) {
     default: return 0
   }
 }
-let test = currencyConverter('£340.0 0', sampleRates);
-console.log(test)

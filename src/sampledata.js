@@ -59,7 +59,7 @@ export const sampleWantsObject = { //eslint-disable-line
         "master_id": 10362,
         "master_url": "https://api.discogs.com/masters/10362",
         "resource_url": "https://api.discogs.com/releases/2366432",
-        "title": "The Dark Side Of The Moon",
+        "title": "The Dark Side Of The Moon 8-Track Cartridge",
         "year": 1974,
         "formats": [
           {
