@@ -29,7 +29,7 @@ function WantedItems(props) {
     wantlist.wants.forEach((item) => {
       addPrices(item)
     })
-  }, [wantlist])
+  }, [wantlist]) //eslint-disable-line
 
   useEffect(() => {
     const sorted = [...wantedItems].filter(
