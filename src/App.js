@@ -1,46 +1,44 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import WantedItems from "./WantedItems.js";
 import "./App.css";
 
 function App() {
-  const [username, setUsername] = useState("aaroncmullan");
+  const [username, setUsername] = useState();
   const [displayName, setDisplayName] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setUsername(displayName);
-    console.log(username);
-    console.log(displayName);
   };
   return (
     <div className="App">
       <header className="App-header">
         <h1>Wantlist Watcher</h1>
-        <h5>
+        <div>
+        <h5 className="Subheader">
           Enter {" "}
           <a
             href="https://www.discogs.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-             Discogs.com 
+            Discogs.com
           </a> {" "}
-          User Name to see Deals on Wantlist Items
+          User Name to See Deals on Wantlist Items
         </h5>
-        <form onSubmit={handleSubmit}>
-          <label>
-            username
+        </div>
+        <form>
+          <label>username:</label>
             <input
               type="text"
               value={displayName}
               onChange={(e) => setDisplayName(e.target.value)}
             />
-          </label>
-          <input type="submit" value="Submit" />
+          <button onClick={handleSubmit}>Submit</button>
         </form>
       </header>
       <div>
-        <WantedItems username={username} />
+        {username && <WantedItems username={username} />}
       </div>
     </div>
   );
