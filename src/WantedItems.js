@@ -16,6 +16,8 @@ function WantedItems(props) {
     fetch(`https://api.discogs.com/users/${props.username}/wants`)
       .then((res) => res.json())
       .then((result) => {
+        setWantedItems([]);
+        setSortedItems([]);
         setWantlist(result);
       });
   }, [props.username]);
