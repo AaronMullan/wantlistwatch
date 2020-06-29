@@ -3,14 +3,12 @@ import { sampleWantsObject, sampleRates } from './sampledata.js';
 import { getExchangeRates, currencyConverter } from './currencyConverter.js';
 import styles from './WantedItems.css';
 
-
 function WantedItems(props) {
   const [wantlist, setWantlist] = useState(sampleWantsObject);
   const [wantedItems, setWantedItems] = useState([]);
   const [sortedItems, setSortedItems] = useState([]);
   const [exchangeRate, setExchangeRate] = useState(sampleRates);
   const [isLoaded, setIsLoaded] = useState(false);
-
 
   useEffect(() => {
     fetch(`https://api.discogs.com/users/${props.username}/wants`)
@@ -64,7 +62,7 @@ function WantedItems(props) {
         .then(() => output.percentage = output.convertedPrice / output.veryGoodPrice)
     ])
       .then(setWantedItems(wantedItems => [...wantedItems, output]))
-  }
+  };
 
   if (isLoaded === false) return <h3>loading</h3>;
 
@@ -82,5 +80,6 @@ function WantedItems(props) {
       ))}
     </ul>
   )
-}
+};
+
 export default WantedItems;
