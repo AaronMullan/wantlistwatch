@@ -26,9 +26,10 @@ function WantedItems(props) {
   }, [])
 
   useEffect(() => {
+    if(wantlist.wants && wantlist.wants.length > 0){
     wantlist.wants.forEach((item) => {
       addPrices(item)
-    })
+    })}
   }, [wantlist]) //eslint-disable-line
 
   useEffect(() => {
@@ -64,22 +65,26 @@ function WantedItems(props) {
       .then(setWantedItems(wantedItems => [...wantedItems, output]))
   };
 
-  if (isLoaded === false) return <h3>loading</h3>;
-
-  return (
-    <ul>
-      {sortedItems.map(element => (
-        <li key={element.id}>
-          <a href={`https://www.discogs.com/sell/release/${element.id}`} target="_blank" rel="noopener noreferrer" >
-            <h3 className={styles.artist}>{`${element.artist}: ${element.title}`}</h3>
-            <p className={styles.veryGoodPrice}>{`Suggested Very Good Price: $${element.veryGoodPrice.toFixed(2)}`}</p>
-            <p className={styles.currentPrice}>{`Current Price in USD: $${(element.convertedPrice).toFixed(2)}`}  </p>
-            <p className={styles.discount}>Percentage Discount: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38'}}>{((1 - element.percentage) * 100).toFixed(2)}%</span></p>
-          </a>
-        </li>
-      ))}
-    </ul>
-  )
+  switch (true) {
+    case (isLoaded === false):
+      return <h3>loading</h3>;
+    case (sortedItems < 1):
+      return <h3>This user wants nothing we can provide.</h3>;
+    default: return (
+      <ul>
+        {sortedItems.map(element => (
+          <li key={element.id}>
+            <a href={`https://www.discogs.com/sell/release/${element.id}`} target="_blank" rel="noopener noreferrer" >
+              <h3 className={styles.artist}>{`${element.artist}: ${element.title}`}</h3>
+              <p className={styles.veryGoodPrice}>{`Suggested Very Good Price: $${element.veryGoodPrice.toFixed(2)}`}</p>
+              <p className={styles.currentPrice}>{`Current Price in USD: $${(element.convertedPrice).toFixed(2)}`}  </p>
+              <p className={styles.discount}>Percentage Discount: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38' }}>{((1 - element.percentage) * 100).toFixed(2)}%</span></p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 };
 
 export default WantedItems;
