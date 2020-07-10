@@ -3,7 +3,8 @@ export function getExchangeRates() {
     .then(res => res.json())
 };
 
-export function currencyConverter(price, rates) {
+export function currencyConverter(rawprice, rates) {
+  const price = rawprice.replace(/[,]/g, '');
   switch (true) {
     case (price.substring(0, 1).split('.')[0] === '$'):
       return (Number(price.slice(1)));
