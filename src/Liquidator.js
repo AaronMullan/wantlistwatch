@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { sampleRates, sampleCollection } from './sampledata.js';
+import { sampleRates } from './sampledata.js';
 import { getExchangeRates, currencyConverter } from './currencyConverter.js';
 import styles from './WantedItems.css';
 
 function Liquidations(props) {
-  const [collection, setCollection] = useState(sampleCollection);
+  const [collection, setCollection] = useState({});
   const [pricedItems, setPricedItems] = useState([]);
   const [sortedItems, setSortedItems] = useState([]);
   const [exchangeRate, setExchangeRate] = useState(sampleRates);
@@ -71,7 +71,7 @@ function Liquidations(props) {
     case (isLoaded === false):
       return <h3>loading</h3>;
     case (sortedItems < 1):
-      return <h3>This user wants nothing we can provide.</h3>;
+      return <h3>*Unburdened*</h3>;
     default: return (
       <ul>
         {sortedItems.map(element => (
@@ -80,7 +80,7 @@ function Liquidations(props) {
               <h3 className={styles.artist}>{`${element.artist}: ${element.title}`}</h3>
               <p className={styles.veryGoodPrice}>{`Suggested Very Good Price: $${element.veryGoodPrice.toFixed(2)}`}</p>
               <p className={styles.currentPrice}>{`Current Price in USD: $${(element.convertedPrice).toFixed(2)}`}  </p>
-              <p className={styles.discount}>Overpriced by: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38' }}>{(( element.percentage) * 100).toFixed(2)}%</span></p>
+              <p className={styles.discount}>Price Mismatch: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38' }}>{(( element.percentage) * 100).toFixed(2)}%</span></p>
             </a>
           </li>
         ))}

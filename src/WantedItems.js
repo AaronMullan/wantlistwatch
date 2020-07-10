@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { sampleWantsObject, sampleRates } from './sampledata.js';
+import { sampleRates } from './sampledata.js';
 import { getExchangeRates, currencyConverter } from './currencyConverter.js';
 import styles from './WantedItems.css';
 
 function WantedItems(props) {
-  const [wantlist, setWantlist] = useState(sampleWantsObject);
+  const [wantlist, setWantlist] = useState({});
   const [wantedItems, setWantedItems] = useState([]);
   const [sortedItems, setSortedItems] = useState([]);
   const [exchangeRate, setExchangeRate] = useState(sampleRates);
@@ -69,7 +69,7 @@ function WantedItems(props) {
     case (isLoaded === false):
       return <h3>loading</h3>;
     case (sortedItems < 1):
-      return <h3>This user wants nothing we can provide.</h3>;
+      return <h3>*Wants nothing*</h3>;
     default: return (
       <ul>
         {sortedItems.map(element => (

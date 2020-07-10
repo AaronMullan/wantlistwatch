@@ -55,7 +55,7 @@ export const sampleWantsObject = { //eslint-disable-line
       "rating": 0,
       "date_added": "2020-02-24T08:17:54-08:00",
       "basic_information": {
-        "id": 2366431,
+        "id": 2366432,
         "master_id": 10362,
         "master_url": "https://api.discogs.com/masters/10362",
         "resource_url": "https://api.discogs.com/releases/2366432",
@@ -351,12 +351,12 @@ export const sampleCollection = {
   },
   "releases": [
     {
-      "id": 1603621,
+      "id": 1603620,
       "instance_id": 440853893,
       "date_added": "2020-02-24T08:26:36-08:00",
       "rating": 0,
       "basic_information": {
-        "id": 1603621,
+        "id": 1603620,
         "master_id": 5913,
         "master_url": "https://api.discogs.com/masters/5913",
         "resource_url": "https://api.discogs.com/releases/1603620",
