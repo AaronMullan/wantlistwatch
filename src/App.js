@@ -1,44 +1,67 @@
 import React, { useState } from "react";
-import WantedItems from "./WantedItems.js";
+import Liquidations from "./Liquidator.js";
 import "./App.css";
+import WantedItems from "./WantedItems.js";
 
 function App() {
   const [username, setUsername] = useState();
-  const [displayName, setDisplayName] = useState();
+  const [displayName, setDisplayName] = useState('');
+  const [liquidator, setLiquidator] = useState(false);
 
+  const handleChange = (e) => setDisplayName(e.target.value)
   const handleSubmit = (event) => {
     event.preventDefault();
     setUsername(displayName);
   };
+  const handleToggle = () => {
+    setLiquidator(liquidator => !liquidator);
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Wantlist Watcher</h1>
+        <h1>Wantlist Watcher / LP Liquidator</h1>
         <div>
-        <h5 className="Subheader">
-          Enter {" "}
-          <a
-            href="https://www.discogs.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discogs.com
+          <h5 className="Subheader">
+            Enter {" "}
+            <a
+              href="https://www.discogs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Discogs.com
           </a> {" "}
-          User Name to See Deals on Wantlist Items
+          User Name <br/>
+          Buy mode to See Deals on Wantlist Items <br/>
+          Sell mode to see Collection Items Currently Overpriced
         </h5>
         </div>
         <form>
-          <label>username:</label>
+          <div className="switchContainer">
+            buy &nbsp;
+            <label className="switch">
             <input
-              type="text"
+              type="checkbox"
+              onChange={handleToggle}
+              checked={liquidator}
+            />
+            <span className="slider"></span>
+            </label>
+            &nbsp; sell
+          </div>
+          <div>
+            <label>username:</label>
+            <input
+            type="text"
               value={displayName}
-              onChange={(e) => setDisplayName(e.target.value)}
+              onChange={handleChange}
             />
           <button onClick={handleSubmit}>Submit</button>
+          </div>
         </form>
       </header>
       <div>
-        {username && <WantedItems username={username} />}
+        {username && liquidator === false && <WantedItems username={username} />}
+        {username && liquidator === true && <Liquidations username={username} />}
       </div>
     </div>
   );

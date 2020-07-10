@@ -231,7 +231,7 @@ export const sampleGetSaleItems = // 20200612150600
   "type": "release"
 };
 
-const sampleWantListObject = { //eslint-disable-line
+export const sampleWantListObject = { //eslint-disable-line
   'wants': [
     {
       'rating': 0,
@@ -339,3 +339,82 @@ const sampleWantListObject = { //eslint-disable-line
     'pages': 1
   }
 };
+export const sampleCollection = {
+  "pagination": {
+    "page": 1,
+    "pages": 1,
+    "per_page": 50,
+    "items": 4,
+    "urls": {
+      
+    }
+  },
+  "releases": [
+    {
+      "id": 1603620,
+      "instance_id": 440853893,
+      "date_added": "2020-02-24T08:26:36-08:00",
+      "rating": 0,
+      "basic_information": {
+        "id": 1603620,
+        "master_id": 5913,
+        "master_url": "https://api.discogs.com/masters/5913",
+        "resource_url": "https://api.discogs.com/releases/1603620",
+        "thumb": "",
+        "cover_image": "",
+        "title": "Stars On E.S.P.",
+        "year": 1996,
+        "formats": [
+          {
+            "name": "Vinyl",
+            "qty": "1",
+            "descriptions": [
+              "LP",
+              "Album",
+              "Limited Edition",
+              "Mono"
+            ]
+          }
+        ],
+        "labels": [
+          {
+            "name": "4AD",
+            "catno": "CAD 6010",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 634,
+            "resource_url": "https://api.discogs.com/labels/634"
+          },
+          {
+            "name": "4AD",
+            "catno": "6010",
+            "entity_type": "1",
+            "entity_type_name": "Label",
+            "id": 634,
+            "resource_url": "https://api.discogs.com/labels/634"
+          }
+        ],
+        "artists": [
+          {
+            "name": "His Name Is Alive",
+            "anv": "",
+            "join": "",
+            "role": "",
+            "tracks": "",
+            "id": 61796,
+            "resource_url": "https://api.discogs.com/artists/61796"
+          }
+        ],
+        "genres": [
+          "Rock",
+          "Pop"
+        ],
+        "styles": [
+          "Art Rock",
+          "Indie Rock",
+          "Indie Pop"
+        ]
+      }
+    }]
+  }
+

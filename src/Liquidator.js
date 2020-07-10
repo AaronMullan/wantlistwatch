@@ -3,21 +3,22 @@ import { sampleRates } from './sampledata.js';
 import { getExchangeRates, currencyConverter } from './currencyConverter.js';
 import styles from './WantedItems.css';
 
-function WantedItems(props) {
-  const [wantlist, setWantlist] = useState({});
-  const [wantedItems, setWantedItems] = useState([]);
+function Liquidations(props) {
+  const [collection, setCollection] = useState({});
+  const [pricedItems, setPricedItems] = useState([]);
   const [sortedItems, setSortedItems] = useState([]);
   const [exchangeRate, setExchangeRate] = useState(sampleRates);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`https://api.discogs.com/users/${props.username}/wants`)
+    setCollection([]);
+    fetch(`https://api.discogs.com/users/${props.username}/collection/folders/0/releases`)
       .then((res) => res.json())
       .then((result) => {
-        setWantedItems([]);
+        setPricedItems([]);
         setSortedItems([]);
-        setWantlist(result);
-      });
+        setCollection(result)
+       });
   }, [props.username]);
 
   useEffect(() => {
@@ -26,29 +27,30 @@ function WantedItems(props) {
   }, [])
 
   useEffect(() => {
-    if(wantlist.wants && wantlist.wants.length > 0){
-    wantlist.wants.forEach((item) => {
-      addPrices(item)
-    })}
-  }, [wantlist]) //eslint-disable-line
+    if (collection.releases && collection.releases.length > 0) {
+      collection.releases.forEach((item) => {
+        addPrices(item)
+      })
+    }
+  }, [collection]) //eslint-disable-line
 
   useEffect(() => {
-    const sorted = [...wantedItems].filter(
+    const sorted = [...pricedItems].filter(
       item => item.percentage !== 0
     );
-    setSortedItems(() => sorted.sort((a, b) => a.percentage - b.percentage))
+    setSortedItems(() => sorted.sort((a, b) => b.percentage - a.percentage))
     setIsLoaded(true)
-  }, [wantedItems])
+  }, [pricedItems])
 
-  async function addPrices(want) {
+  async function addPrices(item) {
     let output = {}
     setIsLoaded(false)
-    output.id = want.basic_information.id
-    output.artist = want.basic_information.artists[0].name
-    output.title = want.basic_information.title
-    output.format = want.basic_information.formats[0].name
+    output.id = item.basic_information.id
+    output.artist = item.basic_information.artists[0].name
+    output.title = item.basic_information.title
+    output.format = item.basic_information.formats[0].name
     Promise.all([
-      await fetch(`https://sicdogs.herokuapp.com/api/v1/sales/${want.id}`)
+      await fetch(`https://sicdogs.herokuapp.com/api/v1/sales/${item.id}`)
         .then((res) => res.json())
         .then((data) => data.listing.filter(item => item.condition_media !== 'Fair (F)'))
         .then((data) => data[0] ? data[0].price : 'none')
@@ -56,20 +58,20 @@ function WantedItems(props) {
           output.currentPrice = data
           output.convertedPrice = currencyConverter(data, exchangeRate)
         }),
-      await fetch(`https://sicdogs.herokuapp.com/api/v1/price/${want.id}`)
+      await fetch(`https://sicdogs.herokuapp.com/api/v1/price/${item.id}`)
         .then((res) => res.json())
         .then((data) => data["Very Good (VG)"] ?
           output.veryGoodPrice = data["Very Good (VG)"]["value"] : output.veryGoodPrice = 0)
         .then(() => output.percentage = output.convertedPrice / output.veryGoodPrice)
     ])
-      .then(setWantedItems(wantedItems => [...wantedItems, output]))
+      .then(setPricedItems(pricedItems => [...pricedItems, output]))
   };
 
   switch (true) {
     case (isLoaded === false):
       return <h3>loading</h3>;
     case (sortedItems < 1):
-      return <h3>*Wants nothing*</h3>;
+      return <h3>*Unburdened*</h3>;
     default: return (
       <ul>
         {sortedItems.map(element => (
@@ -78,7 +80,7 @@ function WantedItems(props) {
               <h3 className={styles.artist}>{`${element.artist}: ${element.title}`}</h3>
               <p className={styles.veryGoodPrice}>{`Suggested Very Good Price: $${element.veryGoodPrice.toFixed(2)}`}</p>
               <p className={styles.currentPrice}>{`Current Price in USD: $${(element.convertedPrice).toFixed(2)}`}  </p>
-              <p className={styles.discount}>Percentage Discount: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38' }}>{((1 - element.percentage) * 100).toFixed(2)}%</span></p>
+              <p className={styles.discount}>Price Mismatch: <span style={{ color: element.percentage < 1 ? '#60C43F' : '#BF3A38' }}>{(( element.percentage) * 100).toFixed(2)}%</span></p>
             </a>
           </li>
         ))}
@@ -87,4 +89,4 @@ function WantedItems(props) {
   }
 };
 
-export default WantedItems;
+export default Liquidations;
