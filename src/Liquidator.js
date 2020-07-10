@@ -12,7 +12,7 @@ function Liquidations(props) {
 
   useEffect(() => {
     setCollection([]);
-    fetch(`https://api.discogs.com/users/${props.username}/collection/folders/0/releases`)
+    fetch(`https://api.discogs.com/users/${props.username}/collection/folders/0/releases?page=1&per_page=200`)
       .then((res) => res.json())
       .then((result) => {
         setPricedItems([]);

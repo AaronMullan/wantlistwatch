@@ -11,7 +11,7 @@ function WantedItems(props) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    fetch(`https://api.discogs.com/users/${props.username}/wants`)
+    fetch(`https://api.discogs.com/users/${props.username}/wants?page=1&per_page=200`)
       .then((res) => res.json())
       .then((result) => {
         setWantedItems([]);
