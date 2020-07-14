@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   min-height: 100vh;
+  margin: 0;
 }
 .App-header {
   background-color: black;
@@ -15,20 +16,31 @@
 }
 .Subheader {
   background-color: #333333;
-  width: 85vw;
+  width: 75vw;
   padding: 2vw;
   margin:2vw;
   border:1px solid #f2f2f2;
+}
+footer {
+  display: flex;
+  flex-direction: row-reverse;
+  margin: 3vh 0 0 0;
+  background-color: black;
+  color: #f2f2f2;
+  padding-right: 10vw;
+}
+footer img {
+  width: 4vw;
 }
 h1, h3 {
   color:#4DD2FF;
   margin:2vw;
 }
-form{
+form {
   display: flex;
   flex-direction: column;
 }
-label{
+label {
   font-size: .6em;
   padding-right: .5em;
 }
