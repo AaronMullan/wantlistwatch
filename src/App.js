@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Liquidations from "./Liquidator.js";
-import "./App.css";
 import WantedItems from "./WantedItems.js";
+import logo from "./GitHub.png"
+import "./App.css";
 
 function App() {
   const [username, setUsername] = useState();
@@ -30,8 +31,8 @@ function App() {
             >
               Discogs.com
           </a> {" "}
-          User Name <br/>
-          Buy mode to See Deals on Wantlist Items <br/>
+          User Name <br />
+          Buy mode to See Deals on Wantlist Items <br />
           Sell mode to see Collection Items Currently Overpriced
         </h5>
         </div>
@@ -39,23 +40,23 @@ function App() {
           <div className="switchContainer">
             buy &nbsp;
             <label className="switch">
-            <input
-              type="checkbox"
-              onChange={handleToggle}
-              checked={liquidator}
-            />
-            <span className="slider"></span>
+              <input
+                type="checkbox"
+                onChange={handleToggle}
+                checked={liquidator}
+              />
+              <span className="slider"></span>
             </label>
             &nbsp; sell
           </div>
           <div>
             <label>username:</label>
             <input
-            type="text"
+              type="text"
               value={displayName}
               onChange={handleChange}
             />
-          <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}>Submit</button>
           </div>
         </form>
       </header>
@@ -63,6 +64,15 @@ function App() {
         {username && liquidator === false && <WantedItems username={username} />}
         {username && liquidator === true && <Liquidations username={username} />}
       </div>
+      <footer>
+        <a
+        href="https://github.com/AaronMullan/wantlistwatch"
+        target="_blank"
+        rel = "noopener noreferrer"
+        >
+          <img src={logo} alt="github logo" />
+        </a>
+      </footer>
     </div>
   );
 }
