@@ -27,7 +27,7 @@ footer {
   margin: 3vh 0 0 0;
   background-color: black;
   color: #f2f2f2;
-  padding-right: 10vw;
+  padding: .5vw 10vw .5vw 0;
 }
 footer img {
   width: 4vw;
